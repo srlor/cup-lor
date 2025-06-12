@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بطولة كأس لور فيفا 25</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        :root {
+            --primary-color: #0a1f44;
+            --secondary-color: #1a3a8f;
+            --accent-color: #e6b31e;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --success-color: #28a745;
+            --info-color: #17a2b8;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+        }
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--dark-color);
+            background-color: #f5f7fa;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: var(--accent-color);
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 2.8rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        header p {
+            margin: 1rem 0 0;
+            font-size: 1.3rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        nav {
+            background-color: var(--primary-color);
+            padding: 1rem 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1.5rem;
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover, nav a.active {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .section {
+            background: white;
+            margin: 2rem 0;
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 5px;
+            height: 100%;
+            background-color: var(--accent-color);
+        }
+        
+        .section h2 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid #eee;
+            position: relative;
+        }
+        
+        .section h2::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            right: 0;
+            width: 100px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+        
+        .trophy-container {
+            text-align: center;
+            margin: 3rem 0;
+        }
+        
+        .trophy-img {
+            display: inline-block;
+            border: 8px solid white;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .trophy-img:hover {
+            transform: scale(1.03);
+        }
+        
+        .trophy-img img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .club-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .club-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+        }
+        
+        .club-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .club-logo {
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f9fa;
+            padding: 1.5rem;
+        }
+        
+        .club-logo img {
+            max-height: 80px;
+            max-width: 80px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+        
+        .club-card:hover .club-logo img {
+            transform: scale(1.1);
+        }
+        
+        .club-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .club-info h3 {
+            margin: 0 0 0.5rem;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+        
+        .club-price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin: 0.8rem 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(230, 179, 30, 0.3);
+        }
+        
+        .btn:hover {
+            background-color: #d9a21b;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(230, 179, 30, 0.4);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
+            box-shadow: none;
+        }
+        
+        .btn-outline:hover {
+            background: var(--accent-color);
+            color: white;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .feature-item {
+            background: white;
+            padding: 1.8rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--accent-color);
+            position: relative;
+        }
+        
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 2.2rem;
+            color: var(--accent-color);
+            margin-bottom: 1.2rem;
+        }
+        
+        .feature-item h3 {
+            color: var(--primary-color);
+            margin: 0 0 0.8rem;
+            font-size: 1.2rem;
+        }
+        
+        .feature-item p {
+            margin: 0;
+            color: #555;
+            font-size: 0.95rem;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            overflow-y: auto;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .modal-content {
+            background: white;
+            margin: 3rem auto;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 8px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+            animation: slideDown 0.4s ease;
+            overflow: hidden;
+        }
+        
+        @keyframes slideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .modal-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-header h3 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .close-modal:hover {
+            transform: rotate(90deg);
+        }
+        
+        .modal-body {
+            padding: 2rem;
+        }
+        
+        /* Player Profile Styles */
+        .player-profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .player-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid var(--accent-color);
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .player-name {
+            font-size: 1.8rem;
+            margin: 0 0 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        .player-team {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+        
+        .player-status {
+            display: inline-block;
+            background-color: var(--success-color);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+        
+        .player-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            width: 100%;
+            margin-top: 1.5rem;
+        }
+        
+        .stat-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid var(--accent-color);
+        }
+        
+        .stat-item:hover {
+            background: #e9ecef;
+            transform: translateY(-3px);
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 0.5rem 0;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .player-details {
+            width: 100%;
+            margin-top: 2rem;
+            border-top: 1px solid #eee;
+            padding-top: 1.5rem;
+        }
+        
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #f1f1f1;
+        }
+        
+        .detail-label {
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+        
+        .detail-value {
+            color: #555;
+        }
+        
+        /* Players Section */
+        .players-section {
+            margin-top: 3rem;
+        }
+        
+        .players-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .player-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .player-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .player-card-img {
+            height: 180px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .player-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .player-card:hover .player-card-img img {
+            transform: scale(1.1);
+        }
+        
+        .player-card-info {
+            padding: 1.2rem;
+        }
+        
+        .player-card-name {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.3rem;
+        }
+        
+        .player-card-team {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .player-card-position {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        /* Matches Section */
+        .matches-section {
+            margin-top: 3rem;
+        }
+        
+        .matches-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .matches-table th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        .matches-table td {
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .matches-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .matches-table tr:hover {
+            background-color: #f1f1f1;
+        }
+        
+        .team-logo {
+            width: 30px;
+            height: 30px;
+            vertical-align: middle;
+            margin: 0 0.5rem;
+        }
+        
+        .match-score {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+        
+        .match-status {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .status-upcoming {
+            background-color: #e9ecef;
+            color: #495057;
+        }
+        
+        .status-live {
+            background-color: var(--danger-color);
+            color: white;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.6; }
+            100% { opacity: 1; }
+        }
+        
+        .status-completed {
+            background-color: var(--success-color);
+            color: white;
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2.5rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .social-icons {
+            margin: 1.5rem 0;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 0.8rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .social-icons a:hover {
+            color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            header p {
+                font-size: 1.1rem;
+            }
+            
+            .section {
+                padding: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav a {
+                margin: 0 0.5rem;
+                padding: 0.5rem;
+                font-size: 1rem;
+            }
+            
+            .section {
+                padding: 1.5rem;
+            }
+            
+            .club-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .players-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            
+            .modal-content {
+                width: 95%;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            nav {
+                padding: 0.8rem 0;
+            }
+            
+            nav a {
+                display: block;
+                margin: 0.5rem 0;
+            }
+            
+            .player-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .matches-table {
+                font-size: 0.9rem;
+            }
+            
+            .matches-table th, 
+            .matches-table td {
+                padding: 0.6rem;
+            }
+            
+            .team-logo {
+                width: 20px;
+                height: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="animate__animated animate__fadeIn">
+        <h1>بطولة كأس لور فيفا 25</h1>
+        <p>بلاستيشن 5</p>
+    </header>
+    
+    <nav>
+        <a href="#home" class="active">الصفحة الرئيسية</a>
+        <a href="#rules">الشروط والقوانين</a>
+        <a href="#registration">التسجيل</a>
+        <a href="#clubs">الأندية</a>
+        <a href="#players">اللاعبين</a>
+        <a href="#matches">جدول المباريات</a>
+        <a href="#features">مميزات البطولة</a>
+    </nav>
+    
+    <div class="container">
+        <section id="home" class="section animate__animated animate__fadeInUp">
+            <h2>مرحباً بكم في بطولة كأس لور</h2>
+            <p>اول بطولة فيفا25 بالنماص. 
+                تقام البطولة على 6 بطولات فرعية يتم اختيار 
+                بطل النسخة والفائز بالمركز الثاني 
+                بينما يتم اختيار بقية اللاعبين عبر تصويت الجمهور واعلى 4 يتاهلون للعب في بطولة كأس لور
+            </p>
+            
+            <div class="trophy-container">
+                <div class="trophy-img">
+                    <img src="https://images.unsplash.com/photo-1531415074968-036ba1b575da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="كأس البطولة">
+                </div>
+            </div>
+        </section>
+        
+        <section id="rules" class="section animate__animated animate__fadeInUp">
+            <h2>الشروط والقوانين</h2>
+            <p>لضمان سير البطولة بشكل منظم وعادل، يرجى الاطلاع على الشروط والقوانين التالية:</p>
+            
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>متطلبات المشاركة</h3>
+                    <p>يشترط أن يكون عمر المشارك 15 سنة فأكثر.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>الالتزام بالمواعيد</h3>
+                    <p>يجب على اللاعب الحضور قبل موعد المباراة بـ 15 دقيقة، والتأخر أكثر من 10 دقائق يعني الخسارة.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3>اللوائح والأنظمة</h3>
+                    <p>جميع القرارات الصادرة من اللجنة المنظمة نهائية وملزمة لجميع المشاركين.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3>قواعد اللعب</h3>
+                    <p>يمنع استخدام أي وسائل غش أو استغلال ثغرات في اللعبة، ويؤدي المخالف إلى الاستبعاد.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="registration" class="section animate__animated animate__fadeInUp">
+            <h2>تسجيل المشاركة</h2>
+            <p>للمشاركة في البطولة، يرجى تعبئة نموذج التسجيل ودفع رسوم الاشتراك البالغة:</p>
+            
+            <div class="trophy-container">
+                <div style="background: var(--primary-color); color: white; display: inline-block; padding: 1.5rem 3rem; border-radius: 8px; font-size: 2rem; font-weight: bold; box-shadow: 0 5px 15px rgba(10, 31, 68, 0.3);">
+                    75 ريال سعودي
+                </div>
+            </div>
+            
+            <p>تشمل رسوم التسجيل:</p>
+            
+            <ul style="list-style-type: none; padding: 0; margin: 1.5rem 0;">
+                <li style="padding: 0.5rem 0; border-bottom: 1px dashed #eee; display: flex; align-items: center;">
+                    <i class="fas fa-check-circle" style="color: var(--success-color); margin-left: 0.5rem;"></i>
+                    ضمان مكان في البطولة
+                </li>
+                <li style="padding: 0.5rem 0; border-bottom: 1px dashed #eee; display: flex; align-items: center;">
+                    <i class="fas fa-check-circle" style="color: var(--success-color); margin-left: 0.5rem;"></i>
+                   لعب 3 مبارايات ودية
+                </li>
+                <li style="padding: 0.5rem 0; border-bottom: 1px dashed #eee; display: flex; align-items: center;">
+                    <i class="fas fa-check-circle" style="color: var(--success-color); margin-left: 0.5rem;"></i>
+                    إحصائيات أداء مفصلة
+                </li>
+                <li style="padding: 0.5rem 0; display: flex; align-items: center;">
+                    <i class="fas fa-check-circle" style="color: var(--success-color); margin-left: 0.5rem;"></i>
+                    فرصة للفوز والتاهل لكأس لور
+                </li>
+            </ul>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+                <button class="btn" style="padding: 1rem 2.5rem; font-size: 1.1rem;">تسجيل المشاركة</button>
+            </div>
+        </section>
+        
+        <section id="clubs" class="section animate__animated animate__fadeInUp">
+            <h2>الأندية المشاركة</h2>
+            <p>اختر ناديك المفضل من بين الأندية المتاحة للمشاركة في البطولة:</p>
+            
+            <div class="club-grid">
+                <div class="club-card">
+                    <div class="club-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/ar/thumb/9/9c/Al-Ahli_SC_logo.svg/1200px-Al-Ahli_SC_logo.svg.png" alt="النادي الأهلي">
+                    </div>
+                    <div class="club-info">
+                        <h3>النادي الأهلي</h3>
+                        <div class="club-price">15 ريال</div>
+                        <button class="btn btn-outline" onclick="openPlayerModal()">عرض اللاعبين</button>
+                    </div>
+                </div>
+                
+                <div class="club-card">
+                    <div class="club-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/ar/thumb/9/9b/Al-Hilal_Logo.svg/1200px-Al-Hilal_Logo.svg.png" alt="نادي الهلال">
+                    </div>
+                    <div class="club-info">
+                        <h3>نادي الهلال</h3>
+                        <div class="club-price">15 ريال</div>
+                        <button class="btn btn-outline" onclick="openPlayerModal()">عرض اللاعبين</button>
+                    </div>
+                </div>
+                
+                <div class="club-card">
+                    <div class="club-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/ar/thumb/e/e8/Al-Ittihad_Club_%28KSA%29_logo.svg/1200px-Al-Ittihad_Club_%28KSA%29_logo.svg.png" alt="نادي الاتحاد">
+                    </div>
+                    <div class="club-info">
+                        <h3>نادي الاتحاد</h3>
+                        <div class="club-price">15 ريال</div>
+                        <button class="btn btn-outline" onclick="openPlayerModal()">عرض اللاعبين</button>
+                    </div>
+                </div>
+                
+                <div class="club-card">
+                    <div class="club-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/ar/thumb/6/6e/Al-Nassr_FC_logo.svg/1200px-Al-Nassr_FC_logo.svg.png" alt="نادي النصر">
+                    </div>
+                    <div class="club-info">
+                        <h3>نادي النصر</h3>
+                        <div class="club-price">50 ريال</div>
+                        <button class="btn btn-outline" onclick="openPlayerModal()">عرض اللاعبين</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Players Section -->
+        <section id="players" class="section animate__animated animate__fadeInUp">
+            <h2>أبرز اللاعبين</h2>
+            <p>تعرف على نجوم البطولة وأفضل اللاعبين المشاركين:</p>
+            
+            <div class="players-grid">
+                <div class="player-card" onclick="openPlayerModal()">
+                    <div class="player-card-img">
+                        <img src="" alt="اللاعب أحمد محمد">
+                    </div>
+                    <div class="player-card-info">
+                        <div class="player-card-name">أحمد محمد</div>
+                        <div class="player-card-team">النادي الأهلي</div>
+                        <div class="player-card-position">هجوم</div>
+                    </div>
+                </div>
+        </section>
+        
+        <!-- Matches Section -->
+        <section id="matches" class="section animate__animated animate__fadeInUp">
+            <h2>جدول المباريات</h2>
+            <p>تعرف على مواعيد المباريات ونتائجها:</p>
+            
+            <table class="matches-table">
+                <thead>
+                    <tr>
+                        <th>التاريخ</th>
+                        <th>المباراة</th>
+                        <th>النتيجة</th>
+                        <th>الحالة</th>
+                        <th>الملعب</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>15 يونيو 2025</td>
+                        <td>
+                            <img src="https://upload.wikimedia.org/wikipedia/ar/thumb/9/9c/Al-Ahli_SC_logo.svg/1200px-Al-Ahli_SC_logo.svg.png" alt="النادي الأهلي" class="team-logo">
+                            الأهلي × النصر
+                            <img src="https://upload.wikimedia.org/wikipedia/ar/thumb/6/6e/Al-Nassr_FC_logo.svg/1200px-Al-Nassr_FC_logo.svg.png" alt="نادي النصر" class="team-logo">
+                        </td>
+                        <td class="match-score">2 - 1</td>
+                        <td><span class="match-status status-completed">مكتملة</span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>16 يونيو 2025</td>
+                        <td>
+                            <img src="https://upload.wikimedia.org/wikipedia/ar/thumb/9/9b/Al-Hilal_Logo.svg/1200px-Al-Hilal_Logo.svg.png" alt="نادي الهلال" class="team-logo">
+                            الهلال × الاتحاد
+                            <img src="https://upload.wikimedia.org/wikipedia/ar/thumb/e/e8/Al-Ittihad_Club_%28KSA%29_logo.svg/1200px-Al-Ittihad_Club_%28KSA%29_logo.svg.png" alt="نادي الاتحاد" class="team-logo">
+                        </td>
+                        <td class="match-score">3 - 2</td>
+                        <td><span class="match-status status-completed">مكتملة</span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>18 يونيو 2025</td>
+                        <td>
+                            <img src="https://upload.wikimedia.org/wikipedia/ar/thumb/9/9c/Al-Ahli_SC_logo.svg/1200px-Al-Ahli_SC_logo.svg.png" alt="النادي الأهلي" class="team-logo">
+                            الأهلي × الهلال
+                            <img src="https://upload.wikimedia.org/wikipedia/ar/thumb/9/9b/Al-Hilal_Logo.svg/1200px-Al-Hilal_Logo.svg.png" alt="نادي الهلال" class="team-logo">
+                        </td>
+                        <td class="match-score">-</td>
+                        <td><span class="match-status status-upcoming">قادمة</span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>20 يونيو 2025</td>
+                        <td>
+                            <img src="https://upload.wikimedia.org/wikipedia/ar/thumb/e/e8/Al-Ittihad_Club_%28KSA%29_logo.svg/1200px-Al-Ittihad_Club_%28KSA%29_logo.svg.png" alt="نادي الاتحاد" class="team-logo">
+                            الاتحاد × النصر
+                            <img src="https://upload.wikimedia.org/wikipedia/ar/thumb/6/6e/Al-Nassr_FC_logo.svg/1200px-Al-Nassr_FC_logo.svg.png" alt="نادي النصر" class="team-logo">
+                        </td>
+                        <td class="match-score">-</td>
+                        <td><span class="match-status status-upcoming">قادمة</span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>22 يونيو 2025</td>
+                        <td>
+                            <img src="https://upload.wikimedia.org/wikipedia/ar/thumb/9/9b/Al-Hilal_Logo.svg/1200px-Al-Hilal_Logo.svg.png" alt="نادي الهلال" class="team-logo">
+                            الهلال × النصر
+                            <img src="https://upload.wikimedia.org/wikipedia/ar/thumb/6/6e/Al-Nassr_FC_logo.svg/1200px-Al-Nassr_FC_logo.svg.png" alt="نادي النصر" class="team-logo">
+                        </td>
+                        <td class="match-score">-</td>
+                        <td><span class="match-status status-live">مباشر</span></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <section id="features" class="section animate__animated animate__fadeInUp">
+            <h2>مميزات البطولة</h2>
+            <p>تتميز بطولة كأس لور فيفا 25 بالعديد من المميزات التي تجعلها الأفضل في المنطقة:</p>
+            
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>جوائز قيمة</h3>
+                    <p>كاس لور للمركز الاول + قسيمة شراء</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-broadcast-tower"></i>
+                    </div>
+                    <h3>مكان إقامة البطولة</h3>
+                    <p>تقام البطولة في شاي ستار</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>إحصائيات متقدمة</h3>
+                    <p>نظام إحصائي متكامل يقدم تحليلات مفصلة لأداء اللاعبين</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>نظام تصويت الجمهور</h3>
+                    <p>نظام تصويت للجمهور لاختيار افضل لاعب</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>خصم في </h3>
+                    <p>بنسوي شراكة مع محلات</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>مجتمع اللاعبين</h3>
+                    <p>مجتمع واتساب - قناة واتساب للاستعلام</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Player Modal -->
+    <div id="playerModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>الملف الشخصي للاعب</h3>
+                <button class="close-modal" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="player-profile">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="صورة اللاعب" class="player-avatar">
+                    <h3 class="player-name">أحمد محمد</h3>
+                    <p class="player-team">النادي الأهلي</p>
+                    <span class="player-status">نشط</span>
+                    
+                    <div class="player-stats">
+                        <div class="stat-item">
+                            <span class="stat-value">15</span>
+                            <span class="stat-label">مباراة</span>
+                        </div>
+                        
+                        <div class="stat-item">
+                            <span class="stat-value">32</span>
+                            <span class="stat-label">هدف</span>
+                        </div>
+                        
+                        <div class="stat-item">
+                            <span class="stat-value">12</span>
+                            <span class="stat-label">تمريرة حاسمة</span>
+                        </div>
+                        
+                        <div class="stat-item">
+                            <span class="stat-value">4.8</span>
+                            <span class="stat-label">التقييم</span>
+                        </div>
+                    </div>
+                    
+                    <div class="player-details">
+                        <div class="detail-row">
+                            <span class="detail-label">العمر:</span>
+                            <span class="detail-value">24 سنة</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">الجنسية:</span>
+                            <span class="detail-value">سعودي</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">المركز:</span>
+                            <span class="detail-value">هجوم</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">تاريخ الانضمام:</span>
+                            <span class="detail-value">15 يناير 2025</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">أفضل نتيجة:</span>
+                            <span class="detail-value">البطل (كأس لور 24)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-snapchat"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p class="copyright">جميع الحقوق محفوظة &copy; 2025 بطولة كأس لور فيفا 25</p>
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script>
+        // Modal Functions
+        function openPlayerModal() {
+            document.getElementById('playerModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            document.getElementById('playerModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('playerModal')) {
+                closeModal();
+            }
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Update active nav link
+                document.querySelectorAll('nav a').forEach(link => {
+                    link.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+        
+        // Animation on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.section');
+            const windowHeight = window.innerHeight;
+            
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                if (sectionTop < windowHeight - 100) {
+                    section.classList.add('animate__animated', 'animate__fadeInUp');
+                }
+            });
+        });
+        
+        // Live match status animation
+        setInterval(function() {
+            const liveStatus = document.querySelector('.status-live');
+            if (liveStatus) {
+                liveStatus.style.animation = 'none';
+                void liveStatus.offsetWidth; // Trigger reflow
+                liveStatus.style.animation = 'pulse 1.5s infinite';
+            }
+        }, 3000);
+    </script>
+</body>
+</html>
